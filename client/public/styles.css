@@ -54,7 +54,6 @@ header input {
     width: 50%;
     text-align: center;
     color: rgb(161, 161, 161);
-    
 }
 
 .card-space-container button {
@@ -195,4 +194,39 @@ header input {
     
 .createArea fieldset button:hover {
     background-color: #365e55;;
+}
+
+/* Responsive */
+
+@media only screen and (max-width: 650px) {
+    body div div header {
+        padding-bottom: 200px;
+    }
+
+    body div div header div {
+        display: block;
+        float: none;
+        width: 50%;
+        margin: auto;
+    }
+
+    .add-issue {
+        display: block !important;
+        margin: 50px auto auto !important;
+    }
+
+    header input {
+        margin: 50px auto auto;
+        width: 100%;
+    }
+
+    header h1 {
+        float: none;
+        text-align: center;
+    }
+
+    header a {
+        text-decoration: none;
+    }
+
 }
