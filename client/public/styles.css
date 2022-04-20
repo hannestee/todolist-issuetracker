@@ -1,0 +1,198 @@
+* {
+    font-family: Roboto;
+}
+
+body {
+    background-color: #eee;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+header {
+    background-color: #1E6F5C;
+    color: white;
+    padding: 24px;
+    height: 48px;
+    box-shadow: 0 1px 5px rgb(99, 187, 166);
+}
+
+header div {
+    float: right;
+}
+
+header a {
+    color: white;
+}
+
+header h1 {
+    float: left;
+}
+
+header .add-issue {
+    border: none;
+    background-color: #E6DD3B;
+    color: #1E6F5C;
+    margin: 0 48px;
+}
+
+header .add-issue:hover {
+    background-color: #365e55;
+}
+
+header input {
+    vertical-align: middle;
+    height: 28px;
+    color: #f7f7f7  ;
+    margin: 0 48px 0 0;
+    background-color: rgba(30,111,92,0.2);
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+.card-space-container {
+    margin: 150px auto;
+    width: 50%;
+    text-align: center;
+    color: rgb(161, 161, 161);
+    
+}
+
+.card-space-container button {
+    margin-top: 50px;
+    color: #E6DD3B;
+    background-color: #1E6F5C;
+}
+
+.card-space-container button:hover {
+    background-color: #365e55;
+}
+
+/* Bug Card styles */
+
+.bug-card {
+    float: left;
+    width: 380px;
+    height: 200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    color: #333;
+    border-radius: 7px;
+}
+
+.bug-card p {
+    margin: 16px 0;
+    height: 20%;
+}
+
+.bug-card button {
+    color: #E6DD3B;
+    background-color: #1E6F5C;
+    margin: 64px 24px 0 0;
+}
+
+.bug-card button:hover {
+    background-color: #365e55;
+}
+
+/* Bug card extended */
+
+.bug-card-extended {
+    width: 50%;
+    height: 1000px;
+    margin: 2px auto;
+    padding: 48px;
+    background-color: #f7f7f7;
+}
+
+.bug-card-extended h1 {
+    margin: 20px 0;
+}
+
+.bug-card-extended button {
+    margin: 20px 0;
+    color: #E6DD3B;
+    background-color: #1E6F5C;
+}
+
+.bug-card-extended div {
+    float: right;
+}
+
+.bug-card-extended div .cancel-button {
+    margin-right: 20px;
+}
+
+.bug-card-extended button:hover {
+    background-color: #365e55;
+}
+
+.bug-card-extended input {
+    margin: 28px 0;
+    font-size: 18px;
+    width: 100%;
+    background-color: rgba(239, 239, 239, 0.8);
+    color: #333;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+.bug-card-extended textarea {
+    resize: none;
+    width: 100%;
+    height: 500px;
+    font-size: 14px;
+    background-color: rgba(239, 239, 239, 0.8);
+    color: #333;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+
+/* Create bug card styles */
+
+.createArea {
+    color: white;
+    text-align: left;
+    background-color: #f7f7f7;
+    width: 30%;
+    margin: 24px auto;
+    padding: 24px;
+    border-radius: 7px;
+}
+
+.createArea fieldset input {
+    font-size: 18px;
+    width: 100%;
+    background-color: rgba(239, 239, 239, 0.8);
+    color: #333;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+.createArea fieldset {
+    border: none;
+}
+
+.createArea fieldset textarea {
+    width: 100%;
+    resize: none;
+    font-size: 14px;
+    background-color: rgba(239, 239, 239, 0.8);
+    color: #333;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+}
+
+.createArea fieldset button {
+    color: #E6DD3B;
+    background-color: #1E6F5C;
+}
+    
+.createArea fieldset button:hover {
+    background-color: #365e55;;
+}

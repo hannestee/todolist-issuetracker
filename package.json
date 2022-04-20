@@ -1,0 +1,22 @@
+{
+  "name": "bug-tracker",
+  "version": "1.0.0",
+  "description": "Basic bug tracker made with React and ExpressJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "16.14.0"
+  },
+  "author": "hannestee",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  }
+}
