@@ -9,19 +9,21 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//mongoose.connect("mongodb://localhost:27017/issueTrackerDB");
-mongoose.connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}`);
+mongoose.connect("mongodb://localhost:27017/issueTrackerDB");
+//mongoose.connect(`mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_URL}`);
 
 const cardSchema = new mongoose.Schema({
     title: String,
-    content: String
+    content: String,
+    importance: String,
 });
 
 const Card = new mongoose.model("Card", cardSchema);
 
 const exampleCard = new Card({
     title: "This is an example issue",
-    content: "Click from the top right to add more"
+    content: "Click from the top right to add more",
+    importance: "High"
 });
 
 app.route("/api/cards")
@@ -40,10 +42,12 @@ app.route("/api/cards")
     .post((req, res) => {
         const title = req.body.title;
         const content = req.body.content;
+        const importance = req.body.importance;
 
         const newCard = new Card({
             title: title,
-            content: content
+            content: content,
+            importance: importance
         });
 
         newCard.save(err => {

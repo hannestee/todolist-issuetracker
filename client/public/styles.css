@@ -87,7 +87,7 @@ header input {
 .bug-card button {
     color: #E6DD3B;
     background-color: #1E6F5C;
-    margin: 64px 24px 0 0;
+    margin: 24px 24px 0 0;
 }
 
 .bug-card button:hover {
@@ -176,6 +176,13 @@ header input {
     border: none;
 }
 
+.createArea hr {
+    border-color: white;
+    border-style: inset;
+    border-width: 1px;
+    margin: 50px 0;
+}
+
 .createArea fieldset textarea {
     width: 100%;
     resize: none;
@@ -185,6 +192,18 @@ header input {
     border: none;
     border-bottom: 1px solid white;
     outline: none;
+}
+
+.createArea fieldset label {
+    color: black;
+}
+
+.createArea .validation {
+    color: red;
+}
+
+.createArea .importance {
+    margin-bottom: 20px;
 }
 
 .createArea fieldset button {

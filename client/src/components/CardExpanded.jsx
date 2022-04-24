@@ -5,6 +5,9 @@ import Collapse from '@mui/material/Collapse';
 import { useLocation, useParams } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import ChipWithColor from "./ChipWithColor";
+import ColorPalette from './ColorPalette';
+import { ThemeProvider } from "@emotion/react";
 
 function CardExpanded() {
 
@@ -13,7 +16,8 @@ function CardExpanded() {
   const [cardData, setCardData] = React.useState(
     {
       title: "",
-      content: ""
+      content: "",
+      importance: ""
     }
   );
   const [isBeingEdited, setIsBeingEdited] = React.useState(false);
@@ -34,7 +38,8 @@ function CardExpanded() {
             setCardData(() => {
               return {
                 title: response.title,
-                content: response.content
+                content: response.content,
+                importance: response.importance
               }
             })
           }
@@ -43,7 +48,8 @@ function CardExpanded() {
       setCardData(() => {
         return {
           title: state.title,
-          content: state.content
+          content: state.content,
+          importance: state.importance
         }
       })
     }
@@ -83,6 +89,7 @@ function CardExpanded() {
   }
 
   return (
+    <ThemeProvider theme={ColorPalette}>
     <div>
       <Heading toggleIssueArea={toggleIssueArea} searchEnabled={false} />
       <Collapse in={showCreateArea}>
@@ -90,6 +97,7 @@ function CardExpanded() {
       </Collapse>
       <div className="bug-card-extended">
         {!isBeingEdited && <Button variant="contained" name="back" onClick={() => navigate("/")}>Back</Button>}
+        <ChipWithColor importance={cardData.importance} />
         {isBeingEdited ? <input name="title" onChange={handleChange} value={cardData.title} /> : <h1>{cardData.title}</h1>}
         {isBeingEdited ? <textarea name="content" onChange={handleChange} value={cardData.content} /> : <p>{cardData.content}</p>}
         <div>
@@ -98,6 +106,7 @@ function CardExpanded() {
         </div>
       </div>
     </div>
+    </ThemeProvider>
   );
 }
 

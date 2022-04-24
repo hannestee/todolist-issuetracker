@@ -6,6 +6,8 @@ import Collapse from '@mui/material/Collapse';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import ColorPalette from './ColorPalette';
+import { ThemeProvider } from "@emotion/react";
 
 function App() {
   const [cards, setCards] = React.useState([]);
@@ -47,6 +49,7 @@ function App() {
   }
 
   return (
+    <ThemeProvider theme={ColorPalette}>
     <div>
       <Heading toggleIssueArea={toggleIssueArea} handleSearch={handleSearch} searchEnabled={true} setSpinnerLoadingState={setSpinnerLoadingState} />
       <Collapse in={showCreateArea}>
@@ -61,7 +64,14 @@ function App() {
       <div>
         {cards.map(card => {
           return (
-            <BugCard key={card._id} id={card._id} title={card.title} content={card.content} toggleUpdateCards={toggleUpdateCards}  />
+            <BugCard 
+              key={card._id} 
+              id={card._id} 
+              title={card.title} 
+              content={card.content}
+              importance={card.importance}
+              toggleUpdateCards={toggleUpdateCards}
+            />
           )
         })}
       </div>
@@ -72,6 +82,7 @@ function App() {
       </div>
       }
     </div>
+    </ThemeProvider>
   );
 }
 
