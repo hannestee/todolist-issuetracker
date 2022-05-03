@@ -11,15 +11,29 @@ import { ThemeProvider } from "@emotion/react";
 
 function CardExpanded() {
 
+  function parseIssueDate(date) {
+      const parsedDate = Date.parse(date);
+      const currentDate = new Date();
+      const fetchedDateTimezoneAdjusted = new Date(parsedDate + (currentDate.getTimezoneOffset() * 60000))
+      
+      const year = fetchedDateTimezoneAdjusted.getFullYear();
+      const month = fetchedDateTimezoneAdjusted.getMonth() +  1;
+      const day = fetchedDateTimezoneAdjusted.getDate();
+      
+      return `${day}/${month}/${year}`;
+  }
+
   const [cardsUpdated, setCardsUpdated] = React.useState(false);
   const [showCreateArea, setShowCreateArea] = React.useState(false);
   const [cardData, setCardData] = React.useState(
     {
       title: "",
       content: "",
-      importance: ""
+      importance: "",
+      createdOn: "",
     }
   );
+
   const [isBeingEdited, setIsBeingEdited] = React.useState(false);
   const { state } = useLocation();
   const { title } = useParams();
@@ -28,6 +42,7 @@ function CardExpanded() {
 
   React.useEffect(() => {
     //If coming from a direct link, get card data
+    
     if (!state) {
       fetch('/api/card/' + title, {
         method: 'GET'
@@ -35,22 +50,31 @@ function CardExpanded() {
         .then(res => res.json())
         .then(response => {
           if (response) {
+
+            const issueCreatedDate = parseIssueDate(response.createdOn);
+
             setCardData(() => {
               return {
                 title: response.title,
                 content: response.content,
-                importance: response.importance
+                importance: response.importance,
+                createdOn: issueCreatedDate
               }
             })
           }
         })
     } else {
+
+      const issueCreatedDate = parseIssueDate(state.createdOn);
+      
       setCardData(() => {
         return {
           title: state.title,
           content: state.content,
-          importance: state.importance
+          importance: state.importance,
+          createdOn: issueCreatedDate,
         }
+        
       })
     }
   }, [state, title]);
@@ -97,10 +121,14 @@ function CardExpanded() {
       </Collapse>
       <div className="bug-card-extended">
         {!isBeingEdited && <Button variant="contained" name="back" onClick={() => navigate("/")}>Back</Button>}
-        <ChipWithColor importance={cardData.importance} />
         {isBeingEdited ? <input name="title" onChange={handleChange} value={cardData.title} /> : <h1>{cardData.title}</h1>}
+        <div className="card-meta-info">
+          <p>Created on: {cardData.createdOn}</p>
+          <ChipWithColor className="chip-with-color" importance={cardData.importance} />
+        </div>
+        <hr></hr>
         {isBeingEdited ? <textarea name="content" onChange={handleChange} value={cardData.content} /> : <p>{cardData.content}</p>}
-        <div>
+        <div className="card-control">
           <Button className={isBeingEdited ? "cancel-button" : ""} variant="contained" name="edit" onClick={() => toggleCardEditing()}>{isBeingEdited ? "Cancel" : "Edit"}</Button>
           {isBeingEdited && <Button variant="contained" name="save" onClick={() => saveCard()}>Save</Button>}
         </div>

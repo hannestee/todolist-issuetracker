@@ -70,6 +70,7 @@ function App() {
               title={card.title} 
               content={card.content}
               importance={card.importance}
+              createdOn={card.createdOn}
               toggleUpdateCards={toggleUpdateCards}
             />
           )

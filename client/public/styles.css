@@ -7,6 +7,13 @@ body {
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
+hr {
+    border-color: white;
+    border-style: inset;
+    border-width: 1px;
+    margin: 50px 0;
+}
+
 header {
     background-color: #1E6F5C;
     color: white;
@@ -94,6 +101,16 @@ header input {
     background-color: #365e55;
 }
 
+.bug-card .non-essential-faded {
+    opacity: .25 !important;
+    visibility: visible !important;
+}
+
+.bug-card .non-essential {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Bug card extended */
 
 .bug-card-extended {
@@ -114,7 +131,7 @@ header input {
     background-color: #1E6F5C;
 }
 
-.bug-card-extended div {
+.bug-card-extended .card-control {
     float: right;
 }
 
@@ -149,6 +166,21 @@ header input {
     outline: none;
 }
 
+.bug-card-extended .card-meta-info p {
+    color: #777;
+    padding-top: 6px;
+}
+
+.card-meta-info {
+    display: inline-flex;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+}
+
+.card-meta-info div {
+    margin-left: auto;
+}
 
 /* Create bug card styles */
 
@@ -174,13 +206,6 @@ header input {
 
 .createArea fieldset {
     border: none;
-}
-
-.createArea hr {
-    border-color: white;
-    border-style: inset;
-    border-width: 1px;
-    margin: 50px 0;
 }
 
 .createArea fieldset textarea {

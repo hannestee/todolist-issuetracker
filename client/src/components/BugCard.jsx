@@ -28,7 +28,8 @@ function BugCard(props) {
             state: {
                 title: props.title,
                 content: props.content,
-                importance: props.importance
+                importance: props.importance,
+                createdOn: props.createdOn,
             }
         });
     }
@@ -37,7 +38,17 @@ function BugCard(props) {
         <div className="bug-card" onMouseOver={ () => setFadeAnimation(true)} onMouseLeave={ () => setFadeAnimation(false)} >
             <h2>{props.title.length > 30 ? props.title.substring(0, 25) + " ..." : props.title}</h2>
             <p>{props.content.length > 100 ? props.content.substring(0, 100) + " ..." : props.content}</p>
-            <Fade in={fadeAnimation}><div><ChipWithColor importance={props.importance}/></div></Fade>
+            { fadeAnimation ?
+            <Fade in={fadeAnimation}>
+                <div>
+                    <ChipWithColor importance={props.importance}/>
+                </div>
+            </Fade>
+            :
+            <div className="non-essential-faded">
+                <ChipWithColor importance={props.importance}/>
+            </div>
+            }
             
             <div className="bug-card-buttons">
             <Button variant="contained" type="submit" name="view" onClick={() => viewCard()}>View</Button>

@@ -16,6 +16,7 @@ const cardSchema = new mongoose.Schema({
     title: String,
     content: String,
     importance: String,
+    createdOn: Date,
 });
 
 const Card = new mongoose.model("Card", cardSchema);
@@ -23,7 +24,8 @@ const Card = new mongoose.model("Card", cardSchema);
 const exampleCard = new Card({
     title: "This is an example issue",
     content: "Click from the top right to add more",
-    importance: "High"
+    importance: "High",
+    createdOn: Date.now()
 });
 
 app.route("/api/cards")
@@ -43,11 +45,13 @@ app.route("/api/cards")
         const title = req.body.title;
         const content = req.body.content;
         const importance = req.body.importance;
+        const createdOn = req.body.createdOn;
 
         const newCard = new Card({
             title: title,
             content: content,
-            importance: importance
+            importance: importance,
+            createdOn: createdOn,
         });
 
         newCard.save(err => {
